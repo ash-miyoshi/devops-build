@@ -22,7 +22,7 @@ pipeline {
         }
         stage('deploy docker image') {
             steps {  
-                sh 'chmod 777 build.sh '
+                sh 'chmod 777 deploy.sh '
                 sh './deploy.sh'
             }
         }
