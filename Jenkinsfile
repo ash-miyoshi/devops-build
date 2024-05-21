@@ -27,12 +27,12 @@ pipeline {
         }
         stage('tag image') {
             steps{
-                sh 'docker tag capstone-react-app_dev-react-frontend ash6842/dev:$BUILD_NUMBER'
+                sh 'docker tag capstone-react-app_dev-react-frontend ash6842/prod:$BUILD_NUMBER'
             }
         }
         stage('push image') {
             steps{
-                sh 'docker push ash6842/dev:$BUILD_NUMBER'
+                sh 'docker push ash6842/prod:$BUILD_NUMBER'
             }
         }
 }
