@@ -3,7 +3,7 @@ pipeline {
     environment {
     DOCKERHUB_CREDENTIALS = credentials('docker-hub-ash6842')
     GIT_REPO_URL = 'https://github.com/ash-miyoshi/devops-build.git'
-    GIT_BRANCH = 'dev'
+    GIT_BRANCH = 'main'
     GITHUB_CREDENTIALS = credentials('jenkins-github')
     }
     stages { 
