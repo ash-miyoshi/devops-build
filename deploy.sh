@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
 
-#command to deploy the image to the server 
-docker-compose up -d
+echo "Starting deployment..."
+docker-compose -f docker-compose.yml up -d --build
+echo "Deployment completed successfully."
