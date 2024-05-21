@@ -20,25 +20,29 @@ pipeline {
                 sh './build.sh'
             }
         }
-        stage('deploy docker image') {
-            steps {  
-                sh 'chmod +x deploy.sh '
-                sh './deploy.sh'
-            }
-        }
+
         stage('login to dockerhub') {
             steps{
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
+
         stage('tag image') {
             steps{
                 sh 'docker tag capstone-react-app_dev-react-frontend ash6842/prod:$BUILD_NUMBER'
             }
         }
+
         stage('push image') {
             steps{
                 sh 'docker push ash6842/prod:$BUILD_NUMBER'
+            }
+        }
+
+        stage('deploy docker image') {
+            steps {  
+                sh 'chmod +x deploy.sh '
+                sh './deploy.sh'
             }
         }
 }
