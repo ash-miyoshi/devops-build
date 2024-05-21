@@ -2,7 +2,8 @@
 set -e
   
 echo " killing all the existing containers"
-#docker rm -f $(docker ps -a -q)   
+#assuming there is an existing container running if there is not container then we can commnet below line 
+docker rm -f $(docker ps -a -q)   
 
 echo "Starting deployment..."
 docker-compose -f docker-compose.yml up -d --build
