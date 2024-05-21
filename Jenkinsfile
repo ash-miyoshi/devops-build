@@ -27,7 +27,7 @@ pipeline {
         }
         stage('tag image') {
             steps{
-                sh 'docker tag devops-build-react-frontend ash6842/dev'
+                sh 'docker tag capstone-react-app_dev-react-frontend ash6842/dev'
             }
         }
         stage('push image') {
