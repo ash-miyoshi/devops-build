@@ -16,7 +16,7 @@ pipeline {
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t valaxy/nodeapp:$BUILD_NUMBER .'
+                sh './build.sh'
             }
         }
         stage('login to dockerhub') {
@@ -24,9 +24,14 @@ pipeline {
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
+        stage('tag image') {
+            steps{
+                sh 'docker tag devops-build-react-frontend ash6842/dev'
+            }
+        }
         stage('push image') {
             steps{
-                sh 'docker push valaxy/nodeapp:$BUILD_NUMBER'
+                sh 'docker push ash6842/dev:$BUILD_NUMBER'
             }
         }
 }
